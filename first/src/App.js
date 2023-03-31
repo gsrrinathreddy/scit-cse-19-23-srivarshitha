@@ -1,11 +1,23 @@
-import React from 'react';
+import logo from './logo.svg';
 import './App.css';
-import {Badge} from "@mui/material"
-
+import Navbar from './Components/Navbar';
+import {Routes,Route} from 'react-router-dom';
+import Aboutme from './Pages/Aboutme';
+import Qualification from './Pages/Qualification';
+import Skills from './Pages/Skills';
+import Hobbies from './Pages/Hobbies';
+import Experience from './Pages/Experience';
 function App() {
   return (
     <div className="App">
-      <Badge>This is First React file</Badge>
+      <Navbar/>
+      <Routes>
+        <Route path="/Aboutme" element={<Aboutme/>}/>`1 `
+        <Route path="/Qualification" element={<Qualification/>}/>
+        <Route path="/Skills" element={<Skills/>}/>
+        <Route path="/Hobbies" element={<Hobbies/>}/>
+        <Route path="/Experience" element={<Experience/>}/>
+              </Routes>
     </div>
   );
 }
