@@ -6,8 +6,24 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import {useState,useEffect} from 'react';
+import axios from 'axios';
 
-export default function Qualifications() {
+export default function Qualification(){
+const [loader,setLoader] = useState(true);
+    const [qualifications,setQualification] = useState(null);
+
+    const connectToServer = async  () => axios.get('http://localhost:8000/Qualification')
+                                            .then(res=>{
+                                        
+                                                console.log(res.data);
+                                                setQualification(res.data);
+                                                setLoader(false)
+                                            }).catch(err=>console.log(err))
+useEffect(()=>{
+   connectToServer();
+},[])
+
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', p: 3}}>
       <h1 className='mode'>Qualifications</h1>
@@ -25,7 +41,7 @@ export default function Qualifications() {
                 variant="body2"
                 color="text.primary"
               >
-                60%
+                65%
               </Typography>
               {" — Bachelors of Technology, Computer Science"}
             </React.Fragment>
